@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racing Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #back {
+            background-image: url('gallery/greenback.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* position: relative; */
+            height: 100vh;
+            display: flex;
+        }
+
+        #btnContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            background-color: yellow;
+            color: #2b2b2b;
+            width: 100px;
+            font-size: 20px;
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #road {
+            position: relative;
+            display: flex;
+            margin-top: 70px;
+            padding-left: 20px;
+        }
+
+        .car1 {
+            width: 250px;
+            height: 200px;
+            margin-top: 300px;
+            transition: margin-left 0.1s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="back">
+        <div id="btnContainer">
+            <button class="btn" onclick="start()">Start</button>
+            <button class="btn" onclick="stop()">Stop</button>
+        </div>
+        <div id="road">
+            <img src="gallery/car3.png" class="car1" alt="Car">
+        </div>
+    </div>
+    <script>
+        var x;
+        var m = 0;
+
+        function start() {
+            x = setInterval(moveCar, 100);
+
+            function moveCar() {
+                // console.log(m);
+                if (m == 1200) {
+                    clearInterval(x);
+                    m = 0;
+                } else {
+                    m = m + 10;
+                    document.querySelector(".car1").style.marginLeft = m + 'px';
+                }
+            }
+        }
+
+        function stop() {
+            clearInterval(x);
+        }
+    </script>
+</body>
+
+</html>
